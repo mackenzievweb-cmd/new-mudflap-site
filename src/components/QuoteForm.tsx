@@ -3,60 +3,66 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, Truck, User } from "lucide-react";
+import { Mail, Phone, User } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 interface QuoteFormProps {
   className?: string;
   variant?: "compact" | "full";
 }
 
+const emptyForm = {
+  name: "",
+  email: "",
+  phone: "",
+  company: "",
+  vehicleType: "",
+  quantity: "",
+  customBranding: "",
+  timeline: "",
+  message: "",
+};
+
 const QuoteForm = ({ className = "", variant = "full" }: QuoteFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    vehicleType: "",
-    quantity: "",
-    customBranding: "",
-    timeline: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState(emptyForm);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Quote Request Submitted!",
-      description: "We'll get back to you within 24 hours with a detailed quote.",
+    const { error } = await supabase.from("quote_requests").insert({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      vehicle_type: formData.vehicleType,
+      quantity: formData.quantity,
+      custom_branding: formData.customBranding,
+      timeline: formData.timeline,
+      message: formData.message,
     });
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      vehicleType: "",
-      quantity: "",
-      customBranding: "",
-      timeline: "",
-      message: "",
-    });
+    if (error) {
+      toast({
+        title: "Submission Failed",
+        description: "Something went wrong. Please try again or call us directly at 888-792-2980.",
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Quote Request Submitted!",
+        description: "We'll get back to you within 24 hours with a detailed quote.",
+      });
+      setFormData(emptyForm);
+    }
 
     setIsSubmitting(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   if (variant === "compact") {
@@ -109,10 +115,10 @@ const QuoteForm = ({ className = "", variant = "full" }: QuoteFormProps) => {
             onChange={handleChange}
             rows={3}
           />
-          <Button 
-            type="submit" 
-            variant="cta" 
-            size="lg" 
+          <Button
+            type="submit"
+            variant="cta"
+            size="lg"
             className="w-full"
             disabled={isSubmitting}
           >
@@ -248,10 +254,10 @@ const QuoteForm = ({ className = "", variant = "full" }: QuoteFormProps) => {
           />
         </div>
 
-        <Button 
-          type="submit" 
-          variant="cta" 
-          size="xl" 
+        <Button
+          type="submit"
+          variant="cta"
+          size="xl"
           className="w-full"
           disabled={isSubmitting}
         >
@@ -259,7 +265,7 @@ const QuoteForm = ({ className = "", variant = "full" }: QuoteFormProps) => {
         </Button>
 
         <p className="text-sm text-muted-foreground text-center">
-          By submitting this form, you agree to receive communications from The Mudflap Guy. 
+          By submitting this form, you agree to receive communications from The Mudflap Guy.
           We respect your privacy and will never share your information.
         </p>
       </form>
