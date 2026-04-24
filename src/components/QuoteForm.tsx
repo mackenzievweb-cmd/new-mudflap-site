@@ -50,14 +50,30 @@ const QuoteForm = ({ className = "", variant = "full" }: QuoteFormProps) => {
         description: "Something went wrong. Please try again or call us directly at 888-792-2980.",
         variant: "destructive",
       });
-    } else {
-      toast({
-        title: "Quote Request Submitted!",
-        description: "We'll get back to you within 24 hours with a detailed quote.",
-      });
-      setFormData(emptyForm);
+      setIsSubmitting(false);
+      return;
     }
 
+    // Send email notification
+    try {
+      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/send-quote-notification`;
+      await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify(formData),
+      });
+    } catch {
+      // Email notification failure should not block the user
+    }
+
+    toast({
+      title: "Quote Request Submitted!",
+      description: "We'll get back to you within 24 hours with a detailed quote.",
+    });
+    setFormData(emptyForm);
     setIsSubmitting(false);
   };
 
