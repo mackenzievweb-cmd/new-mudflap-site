@@ -214,7 +214,7 @@ const QuoteForm = ({ className = "", variant = "full" }: QuoteFormProps) => {
                 name="vehicleType"
                 value={formData.vehicleType}
                 onChange={handleChange}
-                className="w-full h-10 px-3 py-2 border border-input bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                className="w-full h-10 px-3 py-2 border border-input bg-white text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                 required
               >
                 <option value="">Select Vehicle Type</option>
@@ -238,7 +238,7 @@ const QuoteForm = ({ className = "", variant = "full" }: QuoteFormProps) => {
                 name="timeline"
                 value={formData.timeline}
                 onChange={handleChange}
-                className="w-full h-10 px-3 py-2 border border-input bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                className="w-full h-10 px-3 py-2 border border-input bg-white text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
                 required
               >
                 <option value="">Project Timeline</option>
