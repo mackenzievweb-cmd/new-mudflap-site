@@ -1,4 +1,4 @@
-import { SmtpClient } from "npm:smtp@0.1.2";
+import nodemailer from "npm:nodemailer@6.9.14";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -23,19 +23,14 @@ Deno.serve(async (req: Request) => {
   try {
     const quote = await req.json();
 
-    const client = new SmtpClient({
-      connection: {
-        hostname: Deno.env.get("SMTP_HOST") ?? "",
-        port: Number(Deno.env.get("SMTP_PORT") ?? "587"),
-        tls: true,
+    const transporter = nodemailer.createTransport({
+      host: Deno.env.get("SMTP_HOST") ?? "",
+      port: Number(Deno.env.get("SMTP_PORT") ?? "587"),
+      secure: Number(Deno.env.get("SMTP_PORT") ?? "587") === 465,
+      auth: {
+        user: Deno.env.get("SMTP_USER") ?? "",
+        pass: Deno.env.get("SMTP_PASS") ?? "",
       },
-      content_encoding: "7bit",
-    });
-
-    await client.connect();
-    await client.auth({
-      username: Deno.env.get("SMTP_USER") ?? "",
-      password: Deno.env.get("SMTP_PASS") ?? "",
     });
 
     const vehicleLabel: Record<string, string> = {
@@ -69,15 +64,12 @@ Deno.serve(async (req: Request) => {
       <p style="margin-top:16px;color:#666">Submitted at ${new Date().toLocaleString()}</p>
     `;
 
-    await client.send({
+    await transporter.sendMail({
       from: Deno.env.get("SMTP_FROM") ?? Deno.env.get("SMTP_USER") ?? "",
       to: TO_EMAIL,
       subject: `New Quote Request from ${quote.name ?? "Unknown"}`,
-      content: htmlBody,
       html: htmlBody,
     });
-
-    await client.close();
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
