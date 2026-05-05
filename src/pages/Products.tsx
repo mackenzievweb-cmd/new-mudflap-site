@@ -4,16 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import QuoteForm from "@/components/QuoteForm";
-import { 
-  Truck, 
-  Settings, 
-  Shield, 
-  Palette,
-  CheckCircle,
-  Star,
-  Ruler,
-  Package
-} from "lucide-react";
+import { Truck, Settings, Shield, Palette, CircleCheck as CheckCircle, Star, Ruler, Package } from "lucide-react";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -43,7 +34,6 @@ const Products = () => {
       category: "light-duty",
       name: "Light Duty truck mud flaps",
       features: [
-        "Easy bolt-on installation",
         "Multiple size options",
         "Durable construction",
         "Custom branding available"
