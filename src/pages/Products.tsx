@@ -14,6 +14,7 @@ const Products = () => {
     { id: "light-duty", name: "Light Duty trucks" },
     { id: "heavy-duty", name: "Heavy Duty trucks" },
     { id: "trailer", name: "Trailer mud flaps" },
+    { id: "snow", name: "Snow Products" },
   ];
 
   const products = [
@@ -21,6 +22,7 @@ const Products = () => {
       id: 1,
       category: "heavy-duty",
       name: "Heavy duty truck mud flaps",
+      description: "",
       features: [
         "DOT compliant design",
         "Weather-resistant rubber",
@@ -33,6 +35,7 @@ const Products = () => {
       id: 2,
       category: "light-duty",
       name: "Light Duty truck mud flaps",
+      description: "",
       features: [
         "Multiple size options",
         "Durable construction",
@@ -44,11 +47,40 @@ const Products = () => {
       id: 3,
       category: "trailer",
       name: "Trailer mud flaps",
+      description: "",
       features: [
         "Lightweight design",
         "Fleet-friendly options",
         "Quick installation",
         "Professional appearance"
+      ],
+      popular: false,
+    },
+    {
+      id: 4,
+      category: "snow",
+      name: "Snow Deflectors",
+      description: "Our snow deflectors are a special blended thermoplastic rubber designed for the snow plow industry. Available in .35 or .45 gauge, they can be imprinted with custom logos at any location. We also offer the material in blank sheets or rolls. We stock 8\", 9\" and 10\" tall pieces in various lengths.",
+      features: [
+        "Special blended thermoplastic rubber",
+        ".35 or .45 gauge options",
+        "Custom logo imprinting",
+        "Available in sheets or rolls",
+        "8\", 9\" and 10\" tall in various lengths"
+      ],
+      popular: false,
+    },
+    {
+      id: 5,
+      category: "snow",
+      name: "Snow Deflector Mounting Brackets",
+      description: "Our snow deflector mounting bracket is made from a non-metallic, non-corrosive material. Made for a universal fit up to a 120\" plow and used on straight or V-plows, the material can be easily drilled or cut for custom installation. Brackets are sold in kits, with or without fastening hardware.",
+      features: [
+        "Non-metallic, non-corrosive material",
+        "Universal fit up to 120\" plow",
+        "Fits straight or V-plows",
+        "Easily drilled or cut for custom fit",
+        "Sold in kits with or without hardware"
       ],
       popular: false,
     },
@@ -176,8 +208,9 @@ const Products = () => {
                   
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-                    
-                    
+                    {product.description && (
+                      <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
+                    )}
                     <ul className="space-y-2 mb-6">
                       {product.features.map((feature, index) => (
                         <li key={index} className="flex items-center text-sm">
