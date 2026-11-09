@@ -171,10 +171,12 @@ const Contact = () => {
                   For urgent orders and rush production, call us directly to discuss 
                   expedited options and emergency pricing.
                 </p>
-                <Button variant="cta" className="w-full">
-                  <Phone className="h-4 w-4 mr-2" />
-                  Call for Rush Order
-                </Button>
+                <a href="tel:8887922980" className="block w-full">
+                  <Button variant="cta" className="w-full">
+                    <Phone className="h-4 w-4 mr-2" />
+                    Call for Rush Order
+                  </Button>
+                </a>
               </Card>
             </div>
           </div>
