@@ -50,6 +50,15 @@ const SeoMetadata = () => {
   };
   const canonicalUrl = `${siteUrl}${normalizedPath}`;
 
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "The Mudflap Guy",
+    telephone: "888-792-2980",
+    email: "themudflapguy@gmail.com",
+    url: "https://themudflapguyusa.com",
+  };
+
   return (
     <Helmet>
       <title>{metadata.title}</title>
@@ -63,6 +72,11 @@ const SeoMetadata = () => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={metadata.title} />
       <meta name="twitter:description" content={metadata.description} />
+      {normalizedPath === "/" && (
+        <script type="application/ld+json">
+          {JSON.stringify(localBusinessJsonLd)}
+        </script>
+      )}
     </Helmet>
   );
 };
