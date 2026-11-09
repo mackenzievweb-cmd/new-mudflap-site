@@ -87,6 +87,9 @@ const About = () => {
                 <p>
                   The Mud Flap guy has been in the truck parts and equipment business for over 30 years. Today, we're proud to have delivered thousands of mud flaps to satisfied customers, from individual owner-operators to large commercial fleets. Our success is built on simple principles: use the best materials, provide exceptional service, and stand behind our work.
                 </p>
+                <p>
+                  The Mudflap Guy works with fleets, contractors, and truck owners across the western and northeastern United States, including Washington, Oregon, California, Nevada, Idaho, Montana, Wyoming, Utah, Colorado, Arizona, New Mexico, Texas, Oklahoma, Kansas, Nebraska, Iowa, Missouri, Arkansas, Louisiana, Maine, New Hampshire, Vermont, Massachusetts, Rhode Island, Connecticut, New York, Pennsylvania, and Virginia. Contact us for a free quote on custom mud flaps.
+                </p>
               </div>
               <div className="mt-8">
                 <Link to="/contact">

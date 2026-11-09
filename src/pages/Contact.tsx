@@ -15,6 +15,9 @@ const Contact = () => {
               Ready to get started on your custom mud flap project? Fill out our detailed quote form 
               or contact us directly. We'll respond within 24 hours with pricing and timeline.
             </p>
+            <p className="text-lg text-primary-foreground/80 max-w-3xl mx-auto mt-4">
+              Serving commercial and light duty truck owners in the western and northeastern United States.
+            </p>
           </div>
         </div>
       </section>
