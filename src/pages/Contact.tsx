@@ -1,7 +1,7 @@
 import QuoteForm from "@/components/QuoteForm";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Clock, MessageSquare, Headphones, FileText, Truck } from "lucide-react";
+import { Phone, Mail, Clock, MessageSquare, Headphones, FileText, Truck } from "lucide-react";
 const Contact = () => {
   return <div className="min-h-screen">
       {/* Header Section */}
@@ -89,18 +89,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start space-x-3">
-                    <MapPin className="h-5 w-5 text-success mt-1" />
-                    <div>
-                      <p className="font-semibold">
-                        123 Industrial Way<br />
-                        Manufacturing City, ST 12345
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        Facility tours available by appointment
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </Card>
 
