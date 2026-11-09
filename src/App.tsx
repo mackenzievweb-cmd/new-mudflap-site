@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import SeoMetadata from "./components/SeoMetadata";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Gallery from "./pages/Gallery";
@@ -22,6 +23,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Layout>
+          <SeoMetadata />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
