@@ -68,14 +68,42 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h3 className="font-semibold text-lg mb-4">Products</h3>
-            <ul className="space-y-2 text-primary-foreground/80">
-              <li>Rubber and poly mud flaps</li>
-              <li>Snow plow deflectors</li>
-              <li>Snow plow cutting edges</li>
-              <li>Rubber matting</li>
-              <li>Rolled sheeting</li>
-              <li>Tool box liners</li>
-              <li>Custom die-cutting</li>
+            <ul className="space-y-2">
+              <li>
+                <a href="https://themudflapguyusa.com/products" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Rubber and poly mud flaps
+                </a>
+              </li>
+              <li>
+                <a href="https://themudflapguyusa.com/products" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Snow plow deflectors
+                </a>
+              </li>
+              <li>
+                <a href="https://themudflapguyusa.com/products" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Snow plow cutting edges
+                </a>
+              </li>
+              <li>
+                <a href="https://themudflapguyusa.com/products" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Rubber matting
+                </a>
+              </li>
+              <li>
+                <a href="https://themudflapguyusa.com/products" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Rolled sheeting
+                </a>
+              </li>
+              <li>
+                <a href="https://themudflapguyusa.com/products" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Tool box liners
+                </a>
+              </li>
+              <li>
+                <a href="https://themudflapguyusa.com/products" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  Custom die-cutting
+                </a>
+              </li>
             </ul>
           </div>
         </div>
